@@ -1,0 +1,36 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.CsharpProject.iml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+.json
+
+.idea
+.vscode/tasks.json
+.vscode/launch.json
+.vs/JSI-sharp-Projekt/FileContentIndex/0d27a396-ff95-4d05-93ee-06a5aac9c978.vsidx
+.vs/JSI-sharp-Projekt/v17/.wsuo
+.vs/JSI-sharp-Projekt/v17/DocumentLayout.json
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+/.vs/JSI-sharp-Projekt/FileContentIndex
+CsharpProject\backupForXAMLmain.txt
+.vs
+CsharpProject.sln
+CsharpProject.sln.DotSettings
+CsharpProject.sln.DotSettings.user
+.gitattributes
+Game2048/CsharpProject.csproj.DotSettings.user

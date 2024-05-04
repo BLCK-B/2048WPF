@@ -1,0 +1,64 @@
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+using Game2048.Logic;
+
+/*      2048WPF Copyright (C) 2024 BLCK
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+        You should have received a copy of the GNU General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
+
+namespace Game2048
+{
+    public partial class GameMenu : Page
+    {
+        private static NavigationService Navigation;
+        private GameBoardPage gameBoardPage = new();
+        private StatisticsPage statisticsPage = new();
+        // call this object to execute file operations
+        private FileOperations FO = new();
+        
+        public GameMenu()
+        {
+            InitializeComponent();
+        }
+        
+        private void OnLoad(object sender, RoutedEventArgs e)
+        {
+            FO.filesExist();
+            bool exists = FO.getSaveExists();
+            continueButton.IsEnabled = exists;
+            continueButton.Opacity = exists ? 1 : 0.3;
+            if (Main.getGameBoard() != null)
+                textInput.Text = Main.getGameBoard().getPlayerName();
+        }
+        
+        private void newGame(object sender, RoutedEventArgs e)
+        {
+            string playerName = textInput.Text;
+            Main.newGame(playerName);
+            NavigationService.Navigate(gameBoardPage);
+        }
+        private void continueGame(object sender, RoutedEventArgs e)
+        {
+            FO.loadGameState();
+            NavigationService.Navigate(gameBoardPage);
+        }
+        private void Statistics_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(statisticsPage);
+        }
+        private void exitProgram(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        
+    }
+}
